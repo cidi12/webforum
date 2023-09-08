@@ -1,0 +1,74 @@
+if (isset($_GET["post-your-stats"])) {
+                mysqli_query($conn, "INSERT INTO comments VALUES('','$cuser','$crace','$cdesc' ,current_timestamp(),'$cclan','$commentto')");
+                echo "<script>
+                 alert('Komentar berhasil ditambahkan');
+                   </script>";
+                 echo '<script>window.location.replace("topic.php?post-your-stats=' . $as . '&clan='.$clan.'&nametopic='.$as.'")</script>' ;
+                
+            }
+             else if (isset($_GET["clan_guides_detail"])) {
+                mysqli_query($conn, "INSERT INTO comments VALUES('','$cuser','$crace','$cdesc' ,current_timestamp(),'$cclan','$commentto')");
+                echo "<script>
+                alert('Komentar berhasil ditambahkan');</script>";
+               echo '<script>window.location.replace("topic.php?clan_guides_detail=' . $as . '&clan='.$clan.'&nametopic='.$as.'")</script>' ;
+                
+            }
+            else if (isset($_GET["clan_events_detail"])) {
+                mysqli_query($conn, "INSERT INTO comments VALUES('','$cuser','$crace','$cdesc' ,current_timestamp(),'$cclan','$commentto')");
+                echo "<script>
+                alert('Komentar berhasil ditambahkan');
+                </script>";
+                echo '<script>window.location.replace("topic.php?clan_events_detail=' . $as . '&clan='.$clan.'&nametopic='.$as.'")</script>' ;
+            }
+            else if (isset($_GET["news_detail"])) {
+                mysqli_query($conn, "INSERT INTO comments VALUES('','$cuser','$crace','$cdesc' ,current_timestamp(),'$cclan','$commentto')");
+                
+                echo "<script>
+                alert('Komentar berhasil ditambahkan');
+                </script>";
+                echo '<script>window.location.replace("topic.php?news_detail=' . $as . '&clan='.$clan.'&nametopic='.$as.'")</script>' ;
+            }
+
+<!-- 00000000000000000000000000000000000000000000000000000 -->
+
+            if (($_SESSION["user_name"]) == $commenter && isset($_GET["post-your-stats"])) {
+                echo  '<div class="comment-btn-area">
+                <a href="edittopic.php?post-your-stats=' . $commentfor . '&nametopic=' . $commentfor . '&user=' . $commenter . '&clan=' . $commentclan . '&content='.$postid.'" onclick="return confirm(' . $editcommconfirm . ')"  >Edit</a> 
+
+                 <a href="deletecomment.php?post-your-stats=' . $commentfor . '&nametopic=' . $commentfor . '&user=' . $commenter . '&clan=' . $commentclan . ' &comment=' . $comment . '" onclick="return confirm(' . $cconfirmation . ')"  >DELETE</a>
+                   </div>
+                   ';
+
+
+            } 
+            else if (($_SESSION["user_name"]) == $commenter && isset($_GET["clan_guides_detail"])) {
+                echo  '<div class="comment-btn-area">
+                <a href="edittopic.php?clan_guides_detail=' . $commentfor . '&nametopic=' . $commentfor . '&user=' . $commenter . '&clan=' . $commentclan . '&content='.$guideid.'" onclick="return confirm(' . $editcommconfirm . ')"  >Edit</a>
+
+                         <a href="deletecomment.php?clan_guides_detail=' . $commentfor . '&nametopic=' . $commentfor . '&user=' . $commenter . '&clan=' . $commentclan . ' &comment=' . $comment . '" onclick="return confirm(' . $cconfirmation . ')"  >DELETE</a>
+                       </div>';
+
+
+
+            }
+            else if (($_SESSION["user_name"]) == $commenter && isset($_GET["clan_events_detail"])) {
+                echo  '<div class="comment-btn-area">
+                <a href="edittopic.php?clan_events_detail=' . $commentfor . '&nametopic=' . $commentfor . '&user=' . $commenter . '&clan=' . $commentclan . '&content='.$eventsid.'" onclick="return confirm(' . $editcommconfirm . ')"  >Edit</a>
+
+                         <a href="deletecomment.php?clan_events_detail=' . $commentfor . '&nametopic=' . $commentfor . '&user=' . $commenter . '&clan=' . $commentclan . ' &comment=' . $comment . '" onclick="return confirm(' . $cconfirmation . ')"  >DELETE</a>
+                       </div>';
+            }
+            
+            
+            else if (($_SESSION["user_name"]) == $commenter && isset($_GET["news_detail"])) {
+                echo  '<div class="comment-btn-area">
+                
+                <a href="edittopic.php?news_detail=' . $commentfor . '&nametopic=' . $commentfor . '&user=' . $commenter . '&clan=' . $commentclan . '&content='.$newsid.'" onclick="return confirm(' . $editcommconfirm . ')"  >Edit</a>
+
+                         <a href="deletecomment.php?news_detail=' . $commentfor . '&nametopic=' . $commentfor . '&user=' . $commenter . '&clan=' . $commentclan . ' &comment=' . $comment . '" onclick="return confirm(' . $cconfirmation . ')"  >DELETE</a>
+                       </div>';
+                       
+            }
+<!-- lafjkjkjkjkjkjkjkjk -->
+<a href="deletecomment.php?post-your-stats=' . $commentfor . '&nametopic=' . $commentfor . '&user=' . $commenter . '&clan=' . $commentclan . ' &comment=' . $comment . '" onclick="return confirm(' . $cconfirmation . ')"  >DELETE</a>
+                   
